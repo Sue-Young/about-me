@@ -1,7 +1,7 @@
 'use strict';
 
-let siteVisitor = prompt('What is your name?');
-alert(`Welcome to my site ${siteVisitor}! Guess these facts about me.`);
+// let siteVisitor = prompt('What is your name?');
+// alert(`Welcome to my site ${siteVisitor}! Guess these facts about me.`);
 
 // Sooooo much repeated code. NOOOOOOOOOOO! But I will bend to your wishes, Mistress.
 
@@ -65,23 +65,61 @@ alert(`Welcome to my site ${siteVisitor}! Guess these facts about me.`);
 // //   console.log(`Answer yes/no or y/n, ${siteVisitor}`);
 // }
 
-// guess a number game
-let userGuess, counter = -1;
-let answer = Math.floor(Math.random() * 100);
+// varibles used for both games
+let userGuess = 0;
+let counter = 0;
+let score = 0;
 let stillWrong = true;
-while ( counter++ < 4 && stillWrong ){
-  console.log(`counter ${counter}`)
-  userGuess = Number(prompt('Guess a number between 1-100.'));
-  if (userGuess < answer) {
-    alert('Your guess is too low.');
-  } else if (userGuess > answer){
-    alert('Your guess is too high.');
-  } else {
-    stillWrong = false;
-    alert('You are correct!');
+
+// guess a number game
+// let answer = Math.floor(Math.random() * 100);
+
+// while (counter++ < 4 && stillWrong){
+//   userGuess = Number(prompt('Guess a number between 1-100.'));
+//   if (userGuess < answer) {
+//     alert('Your guess is too low.');
+//   } else if (userGuess > answer){
+//     alert('Your guess is too high.');
+//   } else {
+//     stillWrong = false;
+//     score = 1;
+//     alert('You are correct!');
+//   }
+// }
+
+// if (stillWrong){
+//   alert('The correct answer is: ' + answer);
+// }
+
+//guess one of my favorite foods game
+const foods = ['ramen', 'steak', 'salad', 'pizza', 'soup', 'pears', 'fries', 'pies'];
+let guessLeft = 0;
+let tempLeft = 0;
+stillWrong = true;
+while (guessLeft++ < 6 && stillWrong){
+  userGuess = (prompt('Guess one of my favorite foods. (Hint: all are 4-5 characters long.)'));
+  counter = 0;
+  while (counter++ < foods.length-1 && stillWrong) {
+    if (userGuess.toLowerCase() === foods[counter]){
+      alert('Yes, I love '+ foods[counter] + '!');
+      stillWrong = false;
+      score++;
+    }
+  }
+  if (stillWrong) {
+    tempLeft = 6-guessLeft;
+    alert( `Nope! ${tempLeft} guesses left.`);
   }
 }
 
 if (stillWrong){
-  alert('The correct number is: ' + answer);
+  alert('Sorry, you never guessed a right answer. So I\'ll tell you all my favorite foods!');
 }
+
+// display all my yummy food
+let buildStr = 'Here are all my favorite foods:\n';
+for (let i = 1; i < foods.length; i++){
+  buildStr += `${i}.) ${foods[i]} \n`;
+}
+alert(buildStr);
+alert('Your final score: ' + score);
