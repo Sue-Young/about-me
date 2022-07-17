@@ -10,13 +10,10 @@ function yesAndNoQuestion(userAnswer){
   if(userAnswer === 'y' || userAnswer === 'yes'){
     alert('You are correct!');
     score++;
-    //   console.log('You are correct!');
   } else if(userAnswer === 'n' || userAnswer === 'no'){
     alert('You are wrong.');
-    //   console.log('You are wrong.');
   } else{
     alert('Answer yes/no or y/n');
-    //console.log('Answer yes/no or y/n');
   }
 }
 
